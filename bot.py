@@ -1,6 +1,5 @@
 import logging
 import settings
-import sys
 from telegram.ext import Updater,  CommandHandler, MessageHandler, Filters
 
 #Включаем логгирование
@@ -20,8 +19,9 @@ def main():
     mybot.idle()
 
 def greet_user(update, context):
-    print('Вызван /start')
-    update.message.reply_text('Привет, пользователь! Ты вызвал команду /start')
+    user = update.message.from_user
+    print('You talk with user {} '.format(user['username']))
+    update.message.reply_text('Привет, {} '.format(user['username']))
 
 def talk_to_me(update, context):
     user_text = update.message.text
