@@ -28,7 +28,10 @@ def talk_to_me(update, context):
     # пробуем застопать бота на определенное сообщение. 
     # Непонятно как правильно шатдаун сделать
     # и я не первая. Пробуем решение из https://github.com/python-telegram-bot/python-telegram-bot/issues/801
-    if user_text == 'Остановись':
+    # todo: добавить проверку на username 
+    # почему-то не заработало сходу. Добавила в settings имя админа и проверку на него, но idle висит
+    # а цикл проверки ломается и не работает
+    if  user_text == 'Остановись':
         update.message.reply_text('Так точно, капитан, работа остановлена')
         os.kill(os.getpid(), signal.SIGINT)
         # sys.exit() #и этот тоже в консоли висит
